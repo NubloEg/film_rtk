@@ -1,0 +1,131 @@
+.create_watchlist__container{
+    padding: 50px 23px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 38px;
+    display: flex;
+    color: #E1E1E1;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.create_watchlist__form{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #E1E1E1;
+}
+.list__edit__title{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.list__edit__delete{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #F33F3F;
+    transition: all 0.3s;
+
+}
+
+.list__edit__movies{
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.list__edit__movie{
+    border:1px solid black;
+    border-radius: 5px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.edit__movie__info{
+    display: flex;
+    align-items: center;
+    gap:15px;
+}
+
+.edit__image{
+    border-radius: 4px 0px 0px 4px;
+    width: 100px;
+}
+
+.edit__remove{
+    cursor: pointer;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E1E1E1;
+    padding: 11px 10px;
+    background: #1A1A1A;
+    border: 1px solid #F33F3F;
+    border-radius: 4px;
+    margin-right: 15px;
+    transition: all 0.3s;
+}
+
+.edit__remove:hover{
+    background:#F33F3F;
+    color: #000000;
+    font-weight: 700;
+}
+.name,.description{
+    margin-bottom: 5px;
+}
+
+.form__input_name,.form__textarea_description{
+    background:none;
+    padding:10px;
+    margin-bottom: 30px;
+    border: 1px solid #E1E1E1;
+    border-radius: 6px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #E1E1E1;
+}
+
+.form__btn{
+    cursor: pointer;
+    max-width: 247px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #141414;
+    padding: 11px 54px;
+    background: #F33F3F;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.form__btn:hover{
+
+    color: #ffffff;
+    transform: translateY(-5px);
+}
