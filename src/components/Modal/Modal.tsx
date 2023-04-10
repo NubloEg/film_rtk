@@ -28,8 +28,10 @@ const Modal=({setHidden,myList,nowFilm}:propsModal)=>{
     const dispatch=useAppDispatch()
 
     const addFilm=(list:listInt)=>{
+
         dispatch(add_film_to_list({
                 ...list,
+                all_score:Number(nowFilm.rating.toFixed(2)),
                 films:[nowFilm]
             }
         ))
@@ -43,7 +45,7 @@ const Modal=({setHidden,myList,nowFilm}:propsModal)=>{
                 description,
                 films:[],
                 runtime:0,
-                mid_score:0,
+                all_score:0,
                 count:0
             }
         ))
@@ -54,7 +56,7 @@ const Modal=({setHidden,myList,nowFilm}:propsModal)=>{
                 description,
                 films:[],
                 runtime:0,
-                mid_score:0,
+                all_score:0,
                 count:0
             }
         ))

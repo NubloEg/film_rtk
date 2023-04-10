@@ -16,15 +16,16 @@ function ListEdit({nowList}:propsList) {
     const [name,setName]=React.useState(nowList.name)
     const [description,setDescript]=React.useState(nowList.description)
     const [films,setFilms]=React.useState(nowList.films)
+    const [allScore,setAllScore]=React.useState(nowList.all_score)
 
     const dispatch=useAppDispatch()
-
+    console.log(nowList)
     const removeList=()=>{
         dispatch(remove_List({
             id:nowList.id,
              name,
             description,
-            mid_score:nowList.mid_score,
+            all_score:nowList.all_score,
             runtime:nowList.runtime,
             count:nowList.count,
             films:nowList.films
@@ -33,20 +34,25 @@ function ListEdit({nowList}:propsList) {
     const changeList=()=>{
         dispatch(change_List({
             ...nowList,
+            all_score:allScore,
             name,
             description,
-            films
+            films,
         }))
 
         dispatch(change_nowList({
             ...nowList,
+            all_score:allScore,
             name,
             description,
-            films
+            films,
         }))
     }
 
     const removeItem=(id_film:number)=>{
+        let score=allScore-films.filter(el=>el.id===id_film)[0].rating
+        score=Number(score.toFixed(2))
+        setAllScore(score)
         let newFilms=films.filter(el=>el.id!==id_film)
         setFilms(newFilms)
 
@@ -70,7 +76,7 @@ function ListEdit({nowList}:propsList) {
                 Movies
 
                 {
-                    films.map((el:filmInt,i:number)=><EditFilmItem removeItem={removeItem} key={el.id} id={el.id} medium_cover_image={el.medium_cover_image} title={el.title} year={el.year} rating={el.rating} /> )
+                    films.map((el:filmInt,i:number)=><EditFilmItem runtime={el.runtime} removeItem={removeItem} key={el.id} id={el.id} medium_cover_image={el.medium_cover_image} title={el.title} year={el.year} rating={el.rating} /> )
                 }
 
 

@@ -2,12 +2,14 @@ import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import film from "./reducer/film";
 import list from "./reducer/list";
 import {filmsApi} from "./filmsAPI/films.api";
+import home from "./reducer/home";
 
 
 const rootReducer=combineReducers({
 film,
 list,
-[filmsApi.reducerPath]:filmsApi.reducer
+[filmsApi.reducerPath]:filmsApi.reducer,
+    home
 
 })
 

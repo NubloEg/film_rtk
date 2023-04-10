@@ -12,24 +12,24 @@ interface initial{
 
 
 
-export interface Data {
+export interface Data<T> {
     movie_count: number
     limit: number
     page_number: number
-    movies: filmInt[]
+    movies: T[]
 }
 
 export interface filmInt {
-    id?: number
+    id: number
     url?: string
     imdb_code?: string
-    title?: string
+    title: string
     title_english?: string
     title_long?: string
     slug?: string
-    year?: number
-    rating?: number
-    runtime?: number
+    year: number
+    rating: number
+    runtime: number
     genres?: string[]
     summary?: string
     description_full?: string
@@ -53,7 +53,11 @@ const initialState:initial={
     historyFilms:[ ],
 
     nowFilm:{
-
+        id:-1,
+        runtime:10,
+        rating:8.4,
+        title:"Me favorite",
+        year:2023
 
     }
 }
@@ -68,10 +72,13 @@ const filmSlice=createSlice({
         add_history:(state,action:PayloadAction<filmInt>)=>{
             state.historyFilms=state.historyFilms.filter(el=>el.id!==action.payload.id)
             state.historyFilms.unshift(action.payload)
+        },
+        set_ALl_Films:(state,action:PayloadAction<filmInt[]>)=>{
+            state.allFilms=[...action.payload]
         }
 
     }
 })
 
-export const {change_nowFilm,add_history} = filmSlice.actions
+export const {change_nowFilm,add_history,set_ALl_Films} = filmSlice.actions
 export default filmSlice.reducer

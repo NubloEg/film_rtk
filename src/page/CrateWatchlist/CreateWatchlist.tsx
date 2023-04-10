@@ -19,7 +19,7 @@ function CreateWatchlist() {
             description,
             films:[],
             runtime:0,
-            mid_score:0,
+            all_score:0,
             count:0
             }
         ))
@@ -29,7 +29,7 @@ function CreateWatchlist() {
                 description,
                 films:[],
                 runtime:0,
-                mid_score:0,
+                all_score:0,
                 count:0
             }
         ))

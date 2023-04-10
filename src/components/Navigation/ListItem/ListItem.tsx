@@ -11,7 +11,7 @@ interface propsListItem extends listInt{
 
 
 
-const ListItem=({id,name,runtime,description,count,mid_score,films,className,setListActive}:propsListItem)=>{
+const ListItem=({id,name,runtime,description,count,all_score,films,className,setListActive}:propsListItem)=>{
     const firstChar=String(name)[0]
 
     const dispatch=useAppDispatch()
@@ -23,7 +23,7 @@ const ListItem=({id,name,runtime,description,count,mid_score,films,className,set
             runtime,
             description,
             count,
-            mid_score,
+            all_score,
             films
         }))
         setListActive(id)

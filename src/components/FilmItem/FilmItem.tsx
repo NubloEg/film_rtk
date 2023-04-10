@@ -8,6 +8,7 @@ import bad from "../../img/awful.svg";
 import {useAppDispatch} from "../../redux/hook";
 import {add_history, change_nowFilm, filmInt} from '../../redux/reducer/film';
 
+
 interface itemFilmProps extends filmInt{
     setHidden:any,
     isList?:boolean
@@ -17,6 +18,7 @@ interface itemFilmProps extends filmInt{
 
 
 const FilmItem=({id,setHidden,cast,rating,genres,year,title,description_full,medium_cover_image,large_cover_image,runtime,language,isList}:itemFilmProps)=>{
+
     const emotion=()=>{
         if (rating!==undefined){
             if (rating>=7.5){
@@ -80,7 +82,7 @@ const FilmItem=({id,setHidden,cast,rating,genres,year,title,description_full,med
     }
 
     return( <div  className={style.item}>
-            <Link onClick={selectFilm} to="/film/1" >  <img className={style.item_image}   src={medium_cover_image} alt={"poster"}/></Link>
+            <Link onClick={selectFilm} to={`/film/${id}`} >  <img className={style.item_image}   src={medium_cover_image} alt={"poster"}/></Link>
 
             {
                 !isList?<img onClick={(event)=>addFilm(event)} className={style.item__add} src={add} alt=""/>:<></>

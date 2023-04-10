@@ -35,10 +35,10 @@ const Navigation=({myList,nowList}:propsNav)=>{
 
     return(<nav className={style.navigation}>
             <Link to={"/"} onClick={()=> selectSection('Home')} className={style.logo}>Watchlists</Link>
-            <div className={style.search}>
-                <img className={style.search__logo} src={search} alt=""/>
-                <input className={style.search__input} placeholder="Search"/>
-            </div>
+            {/*<div className={style.search}>*/}
+            {/*    <img className={style.search__logo} src={search} alt=""/>*/}
+            {/*    <input className={style.search__input} placeholder="Search"/>*/}
+            {/*</div>*/}
 
             {
                 section.map((el:string,i:number)=><Section key={i} img={`${el}.svg`} className={sectionActive===el?`${style.section} ${style.active}`:style.section} onClick={()=>selectSection(el)}  url={el==='Home'?`/`:`/${el.toLowerCase()}`} title={el}/>)
@@ -50,7 +50,7 @@ const Navigation=({myList,nowList}:propsNav)=>{
             <div className={style.watchlist}>
                 <div className={style.list}>My Lists
                     {
-                        myList.map((el:listInt,i:number)=><ListItem setListActive={selectList} className={listActive!==el.id?style.my_list__item:`${style.my_list__item} ${style.my_list__item__active}`} id={el.id} films={el.films} count={el.count} mid_score={el.mid_score} runtime={el.runtime} description={el.description} key={el.id} name={el.name}/>)
+                        myList.map((el:listInt,i:number)=><ListItem setListActive={selectList} className={listActive!==el.id?style.my_list__item:`${style.my_list__item} ${style.my_list__item__active}`} id={el.id} films={el.films} count={el.count} all_score={el.all_score} runtime={el.runtime} description={el.description} key={el.id} name={el.name}/>)
                     }
 
 

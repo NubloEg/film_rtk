@@ -12,7 +12,7 @@ export interface listInt{
     name:string|number,
     count:number,
     runtime:number,
-    mid_score:number,
+    all_score:number,
     description?:string|number,
     films:Array<filmInt>
 
@@ -24,7 +24,7 @@ const initialState:initial={
 
     ],
     nowList:{
-        id:-1,name:'title',description:'sdf',films:[],count:0,runtime:0,mid_score:0
+        id:-1,name:'title',description:'sdf',films:[],count:0,runtime:0,all_score:0
     }
 }
 let id_main=1
@@ -41,21 +41,23 @@ const listSlice=createSlice({
             id_main++
         },
         change_List:(state,action:PayloadAction<listInt>)=>{
-
+            debugger
             state.myList=state.myList.map(el=>{
-               return( el.id===action.payload.id?{id:el.id,name:action.payload.name,description:action.payload.description,runtime:el.runtime,mid_score:el.mid_score,count:el.count,films:action.payload.films}:el)
+               return( el.id===action.payload.id?{id:el.id,name:action.payload.name,description:action.payload.description,runtime:el.runtime,all_score:el.all_score-action.payload.all_score,count:el.count,films:action.payload.films}:el)
             })
         },
         remove_List:(state,action:PayloadAction<listInt>)=>{
 
             state.myList=state.myList.filter(el=>el.name!==action.payload.name)
 
+
         },
         add_film_to_list:(state,action:PayloadAction<listInt>)=>{
+            debugger
             let nowFilm=state.myList[0].films.filter(el=>el.id!==action.payload.films[0].id)
 
             state.myList=state.myList.map(el=>{
-                return( el.id===action.payload.id?{id:el.id,name:action.payload.name,description:action.payload.description,runtime:el.runtime,mid_score:el.mid_score,count:el.count,films:[...nowFilm,...action.payload.films]}:el)
+                return( el.id===action.payload.id?{id:el.id,name:action.payload.name,description:action.payload.description,runtime:el.runtime,all_score:el.all_score+action.payload.all_score,count:el.count,films:[...nowFilm,...action.payload.films]}:el)
             })
         }
 

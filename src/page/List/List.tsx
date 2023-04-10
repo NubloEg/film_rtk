@@ -12,7 +12,9 @@ interface propsList{
     setHidden:any
 }
 
+
 function List({nowList,setHidden}:propsList) {
+
 
 
     return <div className={style.list__container}>
@@ -28,7 +30,7 @@ function List({nowList,setHidden}:propsList) {
         <div className={style.list__info}>
             <div className={style.list__info__item}>
                 <div className={style.info__item__title}>ITEMS ON LIST</div>
-                <div className={style.info__item__num}>{nowList.count}</div>
+                <div className={style.info__item__num}>{nowList.films.length}</div>
             </div>
             <div className={style.list__info__item}>
                 <div className={style.info__item__title}>UNWATCHED RUNTIME</div>
@@ -36,7 +38,7 @@ function List({nowList,setHidden}:propsList) {
             </div>
             <div className={style.list__info__item}>
                 <div className={style.info__item__title}>AVERAGE SCORE</div>
-                <div className={style.info__item__num}>{nowList.mid_score}</div>
+                <div className={style.info__item__num}>{nowList.all_score.toFixed(1)}</div>
             </div>
         </div>
 

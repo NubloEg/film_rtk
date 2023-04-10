@@ -36,6 +36,92 @@ h1{
     height: 100%;
 
 }
+.filters{
+    display: flex;
+    gap: 40px;
+    z-index: 4;
+    align-items: center;
+}
+
+.filter__category{
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+.main_category{
+    cursor: pointer;
+    z-index:3;
+    border-radius:10px;
+    width: 100%;
+
+    padding: 15px 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:#A41B1B;
+}
+.main_category:hover{
+    background:#c72222;
+}
+
+.my_select_categorys{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    height:min-content;
+    opacity: 0;
+    z-index:-1;
+    position: absolute;
+    top:42px;
+    color: #ffffff;
+    background:#A41B1B;
+    transition: all 0.3s;
+}
+
+.my_select_categorys.active{
+    height:max-content;
+    opacity: 1;
+}
+
+.category{
+    cursor: pointer;
+    padding: 10px 0px;
+    visibility: hidden;
+    transition: all 0.3ms;
+
+    width: 100%;
+
+}
+
+.category:last-child{
+    border-radius: 0 0 10px 10px;
+}
+
+.category.active{
+    visibility: visible;
+
+}
+
+
+.category:hover{
+
+    background: #d02021;
+}
 
 .items{
     width: 100%;
@@ -45,3 +131,53 @@ h1{
     gap: 60px;
 }
 
+.optional{
+    display: flex;
+    padding: 15px 0;
+    max-width: 1395px;
+    justify-content: space-between;
+}
+
+.pagination{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.pagination button{
+    background: #F33F3F;
+    padding: 11px 9px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #141414;
+}
+
+.page{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #ffffff;
+}
+
+.left{
+    border-radius: 20px 6px 6px 20px;
+}
+
+.right{
+    border-radius: 6px 20px 20px 6px;
+}
