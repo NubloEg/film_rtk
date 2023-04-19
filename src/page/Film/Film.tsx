@@ -50,6 +50,7 @@ function Film({nowFilm,setHidden}:propsFilm) {
                 <div className={style.movie__title}>{`${info.data.movie.title} (${info.data.movie.year})`}</div>
                 <div className={style.movie__category_and_hour}>
                     <div className={style.movie__category}>{info.data.movie.genres}</div>
+                    {/*{info && info.data.movies.genres.map((el:string)=><div className={style.movie__category}>{el}</div>)}*/}
                     <div className={style.movie__hour}>{info.data.movie.language}</div>
                 </div>
                 <div className={style.movie__overview}>

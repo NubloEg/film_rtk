@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import style from "./Home.module.css"
 import FilmItem from "../../components/FilmItem/FilmItem";
 
@@ -20,12 +20,11 @@ interface propsHome{
 
 function Home({setHidden,}:propsHome) {
 
-    const {page,rating,category}=useAppSelector(state=>state.home)
-    const {data,isLoading,isError}= useGetAllFilmsQuery(page)
+    const {page,rating,genre}=useAppSelector(state=>state.home)
+    const {data,isLoading,isError}= useGetAllFilmsQuery({page,genre})
 
-    const [initialFilm,setInitialFilm]=useState({})
     const [activeSelect,setActiveSelect]=useState(false)
-    const categoryMovie=["All","Comedy","Horor","TEchnolohy"]
+    const categoryMovie=["All","Comedy","Horror","Action","Fantasy","Adventure","Drama","Animation"]
     const dispatch=useAppDispatch()
     const changePage=(bool:boolean)=>{
         let nowPage=Number(page);
@@ -41,7 +40,7 @@ function Home({setHidden,}:propsHome) {
         dispatch(change_page({
             page:String(nowPage),
             rating,
-            category
+            genre
         }))
     }
 
@@ -50,32 +49,43 @@ function Home({setHidden,}:propsHome) {
     }
 
     const selectCategory=(el:string)=>{
+
         setActiveSelect(!activeSelect)
         dispatch(change_page({
             page,
             rating,
-            category:el,
+            genre:el.toLowerCase(),
         }))
     }
 
 
         const loading=()=>{
-        console.log(data,isLoading,isError)
+
 
             if(isLoading){
                 return <h1>Идет загрузка...</h1>
             }
 
             if(isError){
-                <h1>Что-то пошло не так</h1>
+               return  <h1>Что-то пошло не так</h1>
             }
 
-            if(!isLoading && data.data.hasOwnProperty('movies')){
+            if(!isLoading && data && data.movies){
 
 
-                return  data.data.movies.map((el:filmInt,i:number)=> <FilmItem  language={el.language} key={el.id} large_cover_image={el.large_cover_image} setHidden={()=>setHidden(true)} id={el.id} runtime={el.runtime}  cast={el.cast} genres={el.genres}   description_full={el.description_full} title={el.title}  year={el.year} medium_cover_image={el.medium_cover_image} rating={el.rating} />)
+                return data.movies.map((el:filmInt,i:number)=>
+                    <FilmItem  language={el.language}
+                               key={el.id}
+                               large_cover_image={el.large_cover_image}
+                               setHidden={()=>setHidden(true)}
+                               id={el.id} runtime={el.runtime}
+                               cast={el.cast} genres={el.genres}
+                               description_full={el.description_full}
+                               title={el.title}  year={el.year}
+                               medium_cover_image={el.medium_cover_image}
+                               rating={el.rating} />)
+
             }else{
-                console.log(data.hasOwnProperty('movies'))
                 return <h1>HZ</h1>
             }
 
@@ -89,9 +99,9 @@ function Home({setHidden,}:propsHome) {
             <div className={style.optional}>
                 <div className={style.filters}>
                     <div className={style.filter__category}>
-                        <div onClick={toggleSelect} className={style.main_category}>{category}</div>
+                        <div onClick={toggleSelect} className={style.main_category}>{genre.toUpperCase()}</div>
                         <div className={activeSelect?`${style.my_select_categorys } ${style.active}`:style.my_select_categorys}>
-                            {categoryMovie.map(el=><div onClick={()=>selectCategory(el)} className={ activeSelect?`${style.category } ${style.active}`:style.category}>{el}</div>)}
+                            {categoryMovie.map((el,i)=><div key={i} onClick={()=>selectCategory(el)} className={ activeSelect?`${style.category } ${style.active}`:style.category}>{el}</div>)}
                         </div>
                     </div>
                     <div className={style.search_rating}>2</div>

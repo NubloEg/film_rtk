@@ -19,6 +19,11 @@ export interface Data<T> {
     movies: T[]
 }
 
+export interface Request{
+   page:string,
+   genre:string
+}
+
 export interface filmInt {
     id: number
     url?: string

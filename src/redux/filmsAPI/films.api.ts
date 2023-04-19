@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {Data, filmInt} from "../reducer/film";
+import {Data, filmInt, Request} from "../reducer/film";
 
 
 
@@ -9,8 +9,18 @@ export const filmsApi = createApi({
     reducerPath: 'films/filmsApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://yts.mx/api/v2/' }),
     endpoints: (builder) => ({
-        getAllFilms: builder.query({
-            query: (page)=>`list_movies.json?page=${page}`
+        getAllFilms: builder.query<Data<filmInt>,Request>({
+            query: (data:Request)=>({
+                url:`list_movies.json`,
+                    params:{
+                        page:data.page,
+                        genre:data.genre
+                }
+                }
+            ),
+            transformResponse: (response: any) =>response.data
+
+
 
 
         }),

@@ -4,14 +4,14 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export interface homeInt{
     page:string,
-    category:string,
+    genre:string,
     rating:number
 }
 
 
 const initialState:homeInt={
     page:"1",
-    category:'All',
+    genre:'all',
     rating:0
 }
 
@@ -21,7 +21,7 @@ const homeSlice=createSlice({
     reducers:{
         change_page:(state,action:PayloadAction<homeInt>)=>{
             state.page=action.payload.page
-            state.category=action.payload.category
+            state.genre=action.payload.genre
 
 }
 
