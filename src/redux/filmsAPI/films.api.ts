@@ -14,7 +14,8 @@ export const filmsApi = createApi({
                 url:`list_movies.json`,
                     params:{
                         page:data.page,
-                        genre:data.genre
+                        genre:data.genre,
+                        minimum_rating:data.rating
                 }
                 }
             ),

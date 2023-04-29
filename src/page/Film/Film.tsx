@@ -24,8 +24,8 @@ function Film({nowFilm,setHidden}:propsFilm) {
     const castReturn=(cast:any)=>{
         if (cast!==undefined){
             return (cast.map((el:any,i:number):any=>{
-                return(<div key={i}>
-                    <div  className={style.cast__item}>
+                return(
+                    <div  key={i}  className={style.cast__item}>
                         <img className={style.cast__item__image} src={el.url_small_image!==undefined?el.url_small_image:'https://cdn-icons-png.flaticon.com/512/149/149452.png'} alt={"actor"}/>
                         <div className={style.cast__info}>
                             <div className={style.cast__name}>{el.name}
@@ -33,7 +33,7 @@ function Film({nowFilm,setHidden}:propsFilm) {
                             <div className={style.cast__name_film}>{el.character_name}</div>
                         </div>
                     </div>
-                </div>)
+                )
             }))
         }else{
             return <h2 style={{color:"red"}}>Cast unknown</h2>

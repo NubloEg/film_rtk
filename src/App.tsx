@@ -10,19 +10,21 @@ import Film from "./page/Film/Film";
 import ListEdit from "./page/ListEdit/ListEdit";
 import { useAppSelector} from "./redux/hook";
 import Modal from "./components/Modal/Modal";
+import Authorization from './page/Authorization/Authorization';
+import Register from "./page/Register/Register";
+import Profile from './page/Profile/Profile';
 
 
 
 
 function App() {
-    const film=useAppSelector(state => state.film)
-    const list=useAppSelector(state => state.list)
+    const {film,list,profile}=useAppSelector(state => state)
     const [hidden,setHidden]=React.useState(false)
 
 
   return (
     <div className="App">
-        <Navigation myList={list.myList} nowList={list.nowList} />
+        <Navigation profile={profile} myList={list.myList} nowList={list.nowList} />
         <main className={"main"}>
             <Routes>
                 <Route path={'/'} element={<Home  setHidden={setHidden} />}/>
@@ -31,6 +33,9 @@ function App() {
                 <Route path={'/list/*'} element={<List setHidden={setHidden}  nowList={list.nowList}/>}/>
                 <Route path={'/film/*'} element={<Film setHidden={setHidden} myList={list.myList} nowFilm={film.nowFilm}/>}/>
                 <Route path={'/list_edit/*'} element={<ListEdit nowList={list.nowList}/>}/>
+                <Route path={'/authorization'} element={<Authorization profile={profile}/>}/>
+                <Route path={'/register'} element={<Register profile={profile}/>}/>
+                <Route path={'/profile'} element={<Profile profile={profile} />}/>
             </Routes>
         </main>
         {hidden?<Modal  nowFilm={film.nowFilm} myList={list.myList} setHidden={()=>setHidden(false)}/>:<></>}

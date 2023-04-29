@@ -28,7 +28,7 @@ const Modal=({setHidden,myList,nowFilm}:propsModal)=>{
     const dispatch=useAppDispatch()
 
     const addFilm=(list:listInt)=>{
-
+        debugger
         dispatch(add_film_to_list({
                 ...list,
                 all_score:Number(nowFilm.rating.toFixed(2)),
@@ -61,6 +61,8 @@ const Modal=({setHidden,myList,nowFilm}:propsModal)=>{
             }
         ))
 
+        
+
         setName("")
         setDescript("")
         setHidden(false)
@@ -75,13 +77,16 @@ const Modal=({setHidden,myList,nowFilm}:propsModal)=>{
                     newWatch?<>
                         <div className={style.modal__title__create}>Create new watchlist</div>
                         <div className={style.modal__foot}>
-                            <div className={style.modail__title}>
-                                <div className={style.modal_name}>Name</div>
-                                <div className={style.modal_description}>Description</div>
-                            </div>
                             <div className={style.modal__input}>
-                                <input value={name} onChange={event => setName(event.target.value)} className={style.name_input}/>
-                                <textarea value={description} onChange={event => setDescript(event.target.value)} className={style.descript_input}></textarea>
+                                <div className={style.modal__name}>
+                                    <div className={style.modal_name}>Name</div>
+                                    <input value={name} onChange={event => setName(event.target.value)} className={style.name_input}/>
+
+                                </div>
+                                <div className={style.modal__description}>
+                                    <div className={style.modal_description}>Description</div>
+                                    <textarea value={description} onChange={event => setDescript(event.target.value)} className={style.descript_input}></textarea>
+                                </div>
 
                             </div>
                             <div className={style.modal__btn}>
@@ -90,7 +95,7 @@ const Modal=({setHidden,myList,nowFilm}:propsModal)=>{
 
                             </div>
                         </div>
-                    </>:<> <div className={style.modal__title}>Add movie: <span>Top Gun: Maverick (2022)</span></div>
+                    </>:<> <div className={style.modal__title}>Add movie: <span>{`${nowFilm.title} (${nowFilm.year})`}</span></div>
                         <div className={style.modal_watchlist}>To watchlist:</div>
                         <div className={style.modal_watchlist__items}>
                             {

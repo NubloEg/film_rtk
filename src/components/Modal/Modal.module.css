@@ -2,7 +2,7 @@
 .add_film{
     top: 0;
     left: 0;
-    z-index: 3;
+    z-index: 50;
     position: absolute;
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -10,15 +10,18 @@
     display: flex;
     align-items:center;
     justify-content: center;
+    padding: 0 50px;
 }
 .modal{
     background: #161616;
     border: 1px solid #E1E1E1;
     border-radius: 4px;
-    width: 700px;
-    height: 300px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 300px;
+    height: 100%;
     position: relative;
-    padding: 30px;
+    padding:30px;
 }
 
 .modal__close{
@@ -30,7 +33,6 @@
 }
 
 .modal__title{
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -38,7 +40,6 @@
     display: flex;
     align-items: center;
     text-align: center;
-
     color: #E1E1E1;
 }
 
@@ -215,9 +216,19 @@
 .modal__foot{
 
     display: flex;
+
 }
 
-.modail__title{
+.modal__input{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    width: 100%;
+
+}
+
+.modal__name{
     margin-top: 3%;
     font-family: 'Lato';
     font-style: normal;
@@ -227,22 +238,33 @@
     /* identical to box height */
 
     display: flex;
-    flex-direction:column;
-    gap:43px;
+
+    gap:60px;
     padding-right: 15px;
 
     color: #E1E1E1;
 }
 
-.modal__input{
+.modal__description{
     margin-top: 3%;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
     display: flex;
-    flex-direction:column;
-    justify-content: center;
-    gap:25px;
 
+    gap:13px;
+    padding-right: 15px;
 
+    color: #E1E1E1;
 }
+
+
+
+
 
 .name_input{
     font-family: 'Lato';
@@ -255,6 +277,7 @@
     border-radius: 4px;
     color:white;
     padding:11px;
+    width: 100%;
 }
 
 .descript_input{
@@ -268,14 +291,14 @@
     border-radius: 4px;
     color:white;
     padding:11px;
-    width: 295px;
+    width: 100%;
     height:130px;
 }
 
 
 .modal__btn{
     display: flex;
-    width: 100%;
+
     justify-content: flex-end;
     gap: 30px;
     align-items: flex-end;
@@ -332,4 +355,29 @@
 
 .modal__save:hover{
     background: #ffffff;
+}
+
+
+@media (max-width: 750px) {
+    .modal{
+        max-height: 350px;
+    }
+    .modal__foot{
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .modal{
+        max-height: 400px;
+    }
+
+    .modal__name,.modal__description{
+        flex-direction: column;
+        gap: 10px;
+    }
+
 }

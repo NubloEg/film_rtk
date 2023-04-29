@@ -3,13 +3,15 @@ import film from "./reducer/film";
 import list from "./reducer/list";
 import {filmsApi} from "./filmsAPI/films.api";
 import home from "./reducer/home";
+import profile from "./reducer/profile";
 
 
 const rootReducer=combineReducers({
 film,
 list,
 [filmsApi.reducerPath]:filmsApi.reducer,
-    home
+    home,
+    profile
 
 })
 

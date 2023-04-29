@@ -43,7 +43,7 @@ const listSlice=createSlice({
         change_List:(state,action:PayloadAction<listInt>)=>{
             debugger
             state.myList=state.myList.map(el=>{
-               return( el.id===action.payload.id?{id:el.id,name:action.payload.name,description:action.payload.description,runtime:el.runtime,all_score:el.all_score-action.payload.all_score,count:el.count,films:action.payload.films}:el)
+               return( el.id===action.payload.id?{id:el.id,name:action.payload.name,description:action.payload.description,runtime:el.runtime,all_score:action.payload.all_score,count:el.count,films:action.payload.films}:el)
             })
         },
         remove_List:(state,action:PayloadAction<listInt>)=>{

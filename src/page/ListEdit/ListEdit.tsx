@@ -21,6 +21,7 @@ function ListEdit({nowList}:propsList) {
     const dispatch=useAppDispatch()
     console.log(nowList)
     const removeList=()=>{
+        debugger
         dispatch(remove_List({
             id:nowList.id,
              name,

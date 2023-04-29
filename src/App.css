@@ -46,12 +46,24 @@ h1,h2, h3, h4, h5, h6{font-style: inherit; font-weight: 400;}
   display: flex;
   background:#000000;
   height: 100vh;
-  display: flex;
+
 }
 
 .main{
   width: 100%;
   background: rgba(255, 255, 255, 0.1);
   overflow: auto;
+}
+
+@media (max-width:600px ) {
+  .App{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .main{
+    height: 100%;
+  }
 }
 

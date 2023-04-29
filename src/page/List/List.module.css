@@ -59,6 +59,8 @@
     max-width:691px;
     width: 100%;
     justify-content: space-between;
+    gap: 10px;
+    text-align: center;
 }
 
 .list__info__item{
@@ -101,4 +103,46 @@
     top:15px;
     transition: all 0.3s;
     z-index: 2;
+}
+
+
+@media (max-width: 900px) {
+    .list__container{
+        padding:25px 20px ;
+    }
+
+    .list__info{
+        max-width:100%;
+    }
+}
+
+@media (max-width: 650px) {
+    .list__container{
+        padding:25px 20px ;
+    }
+
+    .list__info{
+        max-width:100%;
+        margin-top: 20px;
+    }
+
+    .list__info__item{
+        font-size: 16px;
+        gap: 5px;
+    }
+
+    .list__films{
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+
+}
+
+@media (max-width: 600px) {
+
+    .list__info{
+       flex-direction: column;
+    }
+
 }

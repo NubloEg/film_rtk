@@ -21,7 +21,7 @@ interface propsHome{
 function Home({setHidden,}:propsHome) {
 
     const {page,rating,genre}=useAppSelector(state=>state.home)
-    const {data,isLoading,isError}= useGetAllFilmsQuery({page,genre})
+    const {data,isLoading,isError}= useGetAllFilmsQuery({page,genre,rating})
 
     const [activeSelect,setActiveSelect]=useState(false)
     const categoryMovie=["All","Comedy","Horror","Action","Fantasy","Adventure","Drama","Animation"]
@@ -62,13 +62,7 @@ function Home({setHidden,}:propsHome) {
         const loading=()=>{
 
 
-            if(isLoading){
-                return <h1>Идет загрузка...</h1>
-            }
 
-            if(isError){
-               return  <h1>Что-то пошло не так</h1>
-            }
 
             if(!isLoading && data && data.movies){
 
@@ -85,12 +79,20 @@ function Home({setHidden,}:propsHome) {
                                medium_cover_image={el.medium_cover_image}
                                rating={el.rating} />)
 
-            }else{
-                return <h1>HZ</h1>
             }
 
         }
+        const [range,setRange]=useState(rating)
 
+        const changeRating=(num:number)=>{
+            setRange(num)
+            
+            dispatch(change_page({
+                page,
+                rating:range,
+                genre,
+            }))
+        }
 
     return <div className={style.category__home}>
         <h1>Welcome to Watchlists</h1>
@@ -104,7 +106,11 @@ function Home({setHidden,}:propsHome) {
                             {categoryMovie.map((el,i)=><div key={i} onClick={()=>selectCategory(el)} className={ activeSelect?`${style.category } ${style.active}`:style.category}>{el}</div>)}
                         </div>
                     </div>
-                    <div className={style.search_rating}>2</div>
+                    <div className={style.search_rating}>
+                        
+                        <div className={style.span_rating}>{`min: ${range.toFixed(1)}`}</div>
+                        <input onChange={event=>changeRating(Number(event.target.value))} value={range} type="range" min={0} max={9} step={0.1} />
+                    </div>
                 </div>
                 <div className={style.pagination}>
                     <button className={style.left} onClick={()=>changePage(false)}>left</button>
@@ -114,7 +120,12 @@ function Home({setHidden,}:propsHome) {
             </div>
 
             <div className={style.items}>
-                {loading()}
+
+
+                { isLoading && <h1>Идет загрузка...</h1>}
+                {isError &&  <h1>Что-то пошло не так</h1>}
+                { loading()}
+
 
 
             </div>

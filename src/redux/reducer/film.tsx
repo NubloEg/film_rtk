@@ -21,7 +21,8 @@ export interface Data<T> {
 
 export interface Request{
    page:string,
-   genre:string
+   genre:string,
+   rating:number
 }
 
 export interface filmInt {

@@ -22,6 +22,7 @@ const homeSlice=createSlice({
         change_page:(state,action:PayloadAction<homeInt>)=>{
             state.page=action.payload.page
             state.genre=action.payload.genre
+            state.rating=action.payload.rating
 
 }
 
