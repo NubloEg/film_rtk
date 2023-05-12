@@ -7,7 +7,8 @@ import user from "../../../src/img/user.svg"
 import search from "../../../src/img/search.svg"
 import {Link} from "react-router-dom";
 import {listInt} from "../../redux/reducer/list";
-import {profileInt} from "../../redux/reducer/profile";
+import {onChangePage, profileInt} from "../../redux/reducer/profile";
+import { useAppDispatch } from '../../redux/hook';
 
 interface propsNav{
     myList:Array<listInt>,
@@ -18,6 +19,7 @@ interface propsNav{
 
 const Navigation=({myList,nowList,profile}:propsNav)=>{
     const [burgerActive,setBurgerActive]=React.useState(false)
+    const dispatch=useAppDispatch()
 
     const section=["Home","History"]
     const [sectionActive,setSectionActive]=React.useState("Home")
@@ -26,6 +28,7 @@ const Navigation=({myList,nowList,profile}:propsNav)=>{
     const selectCrateWatchList=()=>{
         setSectionActive('')
         setListActive(-1)
+
     }
 
     const selectSection=(el:string)=>{
@@ -36,6 +39,7 @@ const Navigation=({myList,nowList,profile}:propsNav)=>{
         setSectionActive("")
         setListActive(id)
     }
+
 
     return(<>
         <div onClick={()=>setBurgerActive(!burgerActive)} className={burgerActive? `${style.burger} ${style.burger_active}`:style.burger}>
@@ -60,7 +64,7 @@ const Navigation=({myList,nowList,profile}:propsNav)=>{
                            }
                        </div>
                    </div>
-                   <Link to={profile.isAutorization?"/profile":"/authorization" }className={style.user}>
+                   <Link to={"/profile" }className={style.user}>
                        <img src={profile.isAutorization?profile.user.img!==undefined?profile.user.img:user:user} alt="" className={style.user__icon}/>
                        <div className={style.user__name}>{profile.isAutorization?profile.user.name:'GUEST'}</div>
                    </Link>
@@ -91,7 +95,7 @@ const Navigation=({myList,nowList,profile}:propsNav)=>{
 
                     </div>
                 </div>
-                <Link to={profile.isAutorization?"/profile":"/authorization" }className={style.user}>
+                <Link to={"/profile" } onClick={e=>dispatch(onChangePage('auto'))} className={style.user}>
                     <img src={profile.isAutorization?profile.user.img!==undefined?profile.user.img:user:user} alt="" className={style.user__icon}/>
                     <div className={style.user__name}>{profile.isAutorization?profile.user.name:'GUEST'}</div>
                 </Link>

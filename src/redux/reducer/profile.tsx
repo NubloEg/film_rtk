@@ -5,6 +5,7 @@ export interface profileInt {
     user:userInt,
     isAutorization: boolean,
     allUsers:Array<userInt>,
+    isPage:String
 
 }
 
@@ -51,7 +52,8 @@ const initialState:profileInt={
         password:'123',
         img:'https://sun9-77.userapi.com/s/v1/ig2/wQp7ojuZmwwLbfBSGVO3sV2jrCL2yfmcFiM7vCeGSruuUs49MGeftmodGrDzx6SRr6oKmimthB1zHvCmoJHQftlz.jpg?size=200x200&quality=95&crop=377,795,815,815&ava=1'
     }],
-    isAutorization:false
+    isAutorization:false,
+    isPage:'auto'
 
 }
 let id=2;
@@ -76,12 +78,15 @@ const profileSlice=createSlice({
         autoProfile:(state,action:PayloadAction<profileInt>)=>{
                 state.isAutorization=true
                 state.user=action.payload.user
-                }
+                },
+        onChangePage:(state,action:PayloadAction<String>)=>{
+            state.isPage=action.payload
+        }
 
 
 
     }
 })
 
-export const {onChangeInfoProfile,createProfile,autoProfile} = profileSlice.actions
+export const {onChangeInfoProfile,createProfile,autoProfile,onChangePage} = profileSlice.actions
 export default profileSlice.reducer
