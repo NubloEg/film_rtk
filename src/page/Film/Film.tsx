@@ -5,6 +5,7 @@ import { filmInt} from "../../redux/reducer/film";
 import {listInt} from "../../redux/reducer/list";
 import {useGetFilmQuery, useGetSuggestionsQuery} from "../../redux/filmsAPI/films.api";
 import FilmItem from "../../components/FilmItem/FilmItem";
+import poster from "../../img/poster_main.jpg"
 
 interface propsFilm{
     nowFilm:filmInt,
@@ -45,7 +46,12 @@ function Film({nowFilm,setHidden}:propsFilm) {
 
     return <div className={style.movie}>
         {info && <div className={style.movie__info}>
-            <img className={style.movie__image} src={info.data.movie.large_cover_image} alt=""/>
+            <img className={style.movie__image} 
+            onError={({ currentTarget }) => {
+                currentTarget.onerror = null; // prevents looping
+                currentTarget.src=poster;
+                                }} 
+  src={info.data.movie.large_cover_image} alt=""/>
             <div className={style.movie__text}>
                 <div className={style.movie__title}>{`${info.data.movie.title} (${info.data.movie.year})`}</div>
                 <div className={style.movie__category_and_hour}>

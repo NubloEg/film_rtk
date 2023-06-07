@@ -47,6 +47,7 @@ function Home({setHidden,}:propsHome) {
     const toggleSelect=()=>{
         setActiveSelect(!activeSelect)
     }
+    console.log(data?.movies)
 
     const selectCategory=(el:string)=>{
 
@@ -57,7 +58,7 @@ function Home({setHidden,}:propsHome) {
             genre:el.toLowerCase(),
         }))
     }
-
+      
 
         const loading=()=>{
 
