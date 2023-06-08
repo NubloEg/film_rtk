@@ -1,6 +1,6 @@
 # React_Nike_Store
 <div id="cover" align="center">
-  <img src="https://github.com/NubloEg/film_rtk/tree/main/public/GIT.png" />
+  <img src="https://github.com/NubloEg/film_rtk/blob/main/public/GIT.jpg" />
 </div>
 
 <h1>База фильмов с добавлением интересующих с вобственный лист(React,RTK,TypeScript)</h1>
